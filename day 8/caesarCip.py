@@ -1,15 +1,19 @@
+import art
 alphabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 flag=True
-
+print(art.logo)
+print('\n\n')
 while flag:
     direction = input("To Encrypt Type 'encode' and to Decrypt Type 'decode':").lower()
     if direction=='encode' or direction=='decode':
         text=input("Type your message:").lower()
         shift=int(input("type the shift number:"))
         print("\n")
+        
     else:
         print("Wrong Command\n")
+        break;
 
     def cypher(text,shift,choice):
         if choice=='encode':
@@ -27,19 +31,20 @@ while flag:
 
             decrypt_txt=""
             for char in text:
-                char_index=alphabet.index(char)
-                shifted_txt_index=(char_index-shift)%26
-                decrypt_char=alphabet[shifted_txt_index]
-                decrypt_txt+=decrypt_char
+                if char in alphabet:
+                    char_index=alphabet.index(char)
+                    shifted_txt_index=(char_index-shift)%26
+                    decrypt_char=alphabet[shifted_txt_index]
+                    decrypt_txt+=decrypt_char
+                else:
+                    decrypt_txt+=char
             print(f"Decrypted Message:{decrypt_txt}\n")  
-    
-
     cypher(text,shift,direction)
     choice=input("Do you want to Repeat this process [Y,N]:").lower()
     
     if choice=="y":
         flag=True
     else:
-        print("\nExit")
-        print("*****Caesar Cipher****")
+        print(art.exit)
+        
         flag=False
