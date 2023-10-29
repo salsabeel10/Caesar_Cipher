@@ -25,9 +25,19 @@
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
+
 import pandas
 
 path="day 26/NATO-alphabet-start/nato_phonetic_alphabet.csv"
 data=pandas.read_csv(path)
 data_frame=pandas.DataFrame(data)
-print(data_frame)
+
+nato_dict={row.letter:row.code for (index,row) in data_frame.iterrows() }
+#A:alfa,b:bravo
+name=input("Enter Your Name:").upper()
+
+
+
+# user_nato=[nato_dict[letter] for letter in name if letter in nato_dict]
+user_nato=[nato_dict[letter] for letter in name if letter in nato_dict]
+print(user_nato)
